@@ -1,0 +1,2 @@
+import { supabase } from './_helpers/supabaseClient.js';
+export default async function handler(req, res){ if(req.method!=='POST') return res.status(405).end(); const {name,email,interest,spending,ref}=req.body; if(!name||!email) return res.status(400).json({error:'missing'}); const {data,error} = await supabase.from('registrations').insert([{name,email,interest,spending,referral:ref}]); if(error) return res.status(500).json({error:error.message}); return res.json({success:true}); }

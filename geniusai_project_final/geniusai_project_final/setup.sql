@@ -1,0 +1,1 @@
+create table public.registrations ( id bigint generated always as identity primary key, name text not null, email text not null unique, interest text, spending text, referral text, paid boolean default false, stripe_customer_id text, stripe_subscription_id text, oauth_provider text, oauth_id text, registered_at timestamptz default now() );
